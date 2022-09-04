@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ExpenseManagement.Migrations
 {
-    public partial class Init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -237,8 +237,8 @@ namespace ExpenseManagement.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "02174cf0–9412–4cfe-afbf-59f706d72cf6", 0, "22287698-608d-473a-9bdc-e4e3830c582d", "admin@gmail.com", true, "Admin", "Super", false, null, null, "ADMIN", "AQAAAAEAACcQAAAAEEZ+cZHOB1FMMO1/nbCcPtkHv2/WfgJFv9MUgC1L8p5GJ6CnZDjPpZuhF3JuEzmVAg==", null, false, "c04982c0-3479-4c36-8d5d-81afc47ef071", false, "admin" },
-                    { "272cf1fd-6e8b-4bdb-87b8-b136033fad9e", 0, "d6c7deb7-c3a8-443b-b721-edce4d91aa73", "carlosg@gmail.com", true, "Carlos", "Gomez", false, null, null, "CARLOSGOMEZ", "AQAAAAEAACcQAAAAEH5wdOIIrsAiMIXhVbSjtP0AYQw+E3+srQ5KxhmVKZQ+aNVrlmG7Po1qcJEurZX6zQ==", null, false, "cd85aa95-c936-4f37-a664-854fee04deb9", false, "carlosgomez" }
+                    { "02174cf0–9412–4cfe-afbf-59f706d72cf6", 0, "701bd55d-852c-4132-9fac-f5470e4a279f", "admin@gmail.com", true, "Admin", "Super", false, null, null, "ADMIN", "AQAAAAEAACcQAAAAEEbDbiiYQ5aADrYamqsiLAxdB6koWYMvKKBLVUsWkROXkmLZ/8lKNqBhwpwp7gU01w==", null, false, "2a513569-507e-46a3-9d4f-6ad39aec3c81", false, "admin" },
+                    { "272cf1fd-6e8b-4bdb-87b8-b136033fad9e", 0, "d4af9f47-3da1-4d1d-9646-214d27d4d598", "carlosg@gmail.com", true, "Carlos", "Gomez", false, null, null, "CARLOSGOMEZ", "AQAAAAEAACcQAAAAEKOTdR0+nusRhcbB2meHG68NJgPYDCo3nnX5dxocoyTpMmdwmmwCHsCHBNqTvWr+1g==", null, false, "495ab526-f4d7-4b2f-bcf8-ad872299c601", false, "carlosgomez" }
                 });
 
             migrationBuilder.InsertData(

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\AAImportant\\ExpenseManagement\\ExpenseManagement\\ExpenseManagement.csproj": {}
+    "C:\\AAImportant\\Expense-Management\\ExpenseManagement\\ExpenseManagement\\ExpenseManagement.csproj": {}
   },
   "projects": {
-    "C:\\AAImportant\\ExpenseManagement\\ExpenseManagement\\ExpenseManagement.csproj": {
+    "C:\\AAImportant\\Expense-Management\\ExpenseManagement\\ExpenseManagement\\ExpenseManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\AAImportant\\ExpenseManagement\\ExpenseManagement\\ExpenseManagement.csproj",
+        "projectUniqueName": "C:\\AAImportant\\Expense-Management\\ExpenseManagement\\ExpenseManagement\\ExpenseManagement.csproj",
         "projectName": "ExpenseManagement",
-        "projectPath": "C:\\AAImportant\\ExpenseManagement\\ExpenseManagement\\ExpenseManagement.csproj",
+        "projectPath": "C:\\AAImportant\\Expense-Management\\ExpenseManagement\\ExpenseManagement\\ExpenseManagement.csproj",
         "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "C:\\AAImportant\\ExpenseManagement\\ExpenseManagement\\obj\\",
+        "outputPath": "C:\\AAImportant\\Expense-Management\\ExpenseManagement\\ExpenseManagement\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",

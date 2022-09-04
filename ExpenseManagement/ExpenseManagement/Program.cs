@@ -90,13 +90,16 @@ builder.Services.AddIdentity<User, IdentityRole>(opt =>
     .AddEntityFrameworkStores<ApplicationExpenseContext>();
 
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
-builder.Services.AddScoped<IExpenseService, ExpenseService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 builder.Services.AddScoped<IJwtGeneratorService, JwtGeneratorService>();
 builder.Services.AddScoped<IExpenseService, ExpenseService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+
 
 
 var app = builder.Build();

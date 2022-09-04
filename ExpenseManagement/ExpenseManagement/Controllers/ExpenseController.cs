@@ -23,7 +23,7 @@ namespace ExpenseManagement.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<ExpenseDto>>> GetExpenses(string userId)
+        public ActionResult<ICollection<ExpenseDto>> GetExpenses(string userId)
         {
 
             
@@ -39,7 +39,7 @@ namespace ExpenseManagement.Controllers
         }
 
         [HttpGet("{expenseId}")]
-        public async Task<ActionResult<ExpenseDto>> GetExpense(string userId, int expenseId)
+        public ActionResult<ExpenseDto> GetExpense(string userId, int expenseId)
         {
 
 
@@ -55,7 +55,7 @@ namespace ExpenseManagement.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ICollection<ExpenseDto>>> AddExpense(ExpenseToCreationDto expenseToCreation)
+        public ActionResult<ICollection<ExpenseDto>> AddExpense(ExpenseToCreationDto expenseToCreation)
         {
 
             if (expenseToCreation == null)
@@ -69,7 +69,7 @@ namespace ExpenseManagement.Controllers
 
 
         [HttpPut("{expenseId}")]
-        public async Task<ActionResult<ICollection<ExpenseDto>>> UpdateExpense(ExpenseToUpdateDto expenseToUpdate, int expenseId, string userId)
+        public ActionResult<ICollection<ExpenseDto>> UpdateExpense(ExpenseToUpdateDto expenseToUpdate, int expenseId, string userId)
         {
 
 
@@ -83,7 +83,7 @@ namespace ExpenseManagement.Controllers
         }
 
         [HttpDelete("{expenseId}")]
-        public async Task<ActionResult<ICollection<ExpenseDto>>> DeleteExpense(int expenseId, string userId)
+        public ActionResult<ICollection<ExpenseDto>> DeleteExpense(int expenseId, string userId)
         {
 
 
@@ -91,7 +91,7 @@ namespace ExpenseManagement.Controllers
             _expenseService.DeleteExpense(expenseId);
 
 
-            return Ok("Expense updated successfully");
+            return Ok("Expense deleted successfully");
         }
     }
 }
