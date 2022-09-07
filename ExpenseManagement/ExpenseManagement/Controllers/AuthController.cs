@@ -38,10 +38,7 @@ namespace ExpenseManagement.Controllers
 			var jwt = _jwtGeneratorService.GenerateAuthToken(user, roles);
 
 
-			return Ok(new
-			{
-				AccessToken = jwt
-			});
+			return Ok(jwt);
 		}
 
 		[HttpPost("/signup")]
@@ -54,13 +51,19 @@ namespace ExpenseManagement.Controllers
 			{
 				var userToToken = await _userManager.FindByNameAsync(user.UserName);
 
-				
+				if (userToToken == null)
+					return BadRequest();
+
+				await _userManager.AddToRoleAsync(userToToken, "User");
+
 
 				var roles = await _userManager.GetRolesAsync(userToToken);
 
 				var jwt_signup = _jwtGeneratorService.GenerateAuthToken(userToToken, roles);
 
-				if(jwt_signup != null)
+
+
+				if (jwt_signup != null)
                 {
 					return jwt_signup;
                 }

@@ -17,14 +17,14 @@ namespace ExpenseManagement.Services.Implementations
             _expenseRepository = expenseRepository;
         }
 
-        public void AddExpense(ExpenseToCreationDto newExpense)
+        public void AddExpense(ExpenseToCreationDto newExpense, string userId)
         {
             if (newExpense is null)
                 return;
 
             Expense expenseMapped = _mapper.Map<Expense>(newExpense);
 
-
+            expenseMapped.UserId = userId;
             _expenseRepository.AddExpense(expenseMapped);
         }
 

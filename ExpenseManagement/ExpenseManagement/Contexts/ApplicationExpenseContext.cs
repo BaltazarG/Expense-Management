@@ -12,7 +12,8 @@ namespace ExpenseManagement.Contexts
         {
         }
 
-        
+        public DbSet<Expense>? Expenses { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -92,7 +93,6 @@ namespace ExpenseManagement.Contexts
                 UserId = ADMIN_ID
             });
         }
-        public DbSet<Expense>? Expenses { get; set; }
 
 
 

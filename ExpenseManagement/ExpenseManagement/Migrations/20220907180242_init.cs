@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ExpenseManagement.Migrations
 {
-    public partial class Initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -208,7 +208,7 @@ namespace ExpenseManagement.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Amount = table.Column<double>(type: "double", nullable: false),
                     Category = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "varchar(255)", nullable: false)
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
@@ -218,8 +218,7 @@ namespace ExpenseManagement.Migrations
                         name: "FK_Expenses_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -237,8 +236,8 @@ namespace ExpenseManagement.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "02174cf0–9412–4cfe-afbf-59f706d72cf6", 0, "701bd55d-852c-4132-9fac-f5470e4a279f", "admin@gmail.com", true, "Admin", "Super", false, null, null, "ADMIN", "AQAAAAEAACcQAAAAEEbDbiiYQ5aADrYamqsiLAxdB6koWYMvKKBLVUsWkROXkmLZ/8lKNqBhwpwp7gU01w==", null, false, "2a513569-507e-46a3-9d4f-6ad39aec3c81", false, "admin" },
-                    { "272cf1fd-6e8b-4bdb-87b8-b136033fad9e", 0, "d4af9f47-3da1-4d1d-9646-214d27d4d598", "carlosg@gmail.com", true, "Carlos", "Gomez", false, null, null, "CARLOSGOMEZ", "AQAAAAEAACcQAAAAEKOTdR0+nusRhcbB2meHG68NJgPYDCo3nnX5dxocoyTpMmdwmmwCHsCHBNqTvWr+1g==", null, false, "495ab526-f4d7-4b2f-bcf8-ad872299c601", false, "carlosgomez" }
+                    { "02174cf0–9412–4cfe-afbf-59f706d72cf6", 0, "b09929ce-5dd9-43aa-9b64-2a1cf892c731", "admin@gmail.com", true, "Admin", "Super", false, null, null, "ADMIN", "AQAAAAEAACcQAAAAEDMRldhxbvOWwu3I8ZkqImB7ZSxD11BqTSL+Eg3vQCWfpxvzB4r5J//w/1BzVN5M4g==", null, false, "de215fd2-447f-4474-9dcd-17d496f1b095", false, "admin" },
+                    { "272cf1fd-6e8b-4bdb-87b8-b136033fad9e", 0, "227a38da-7df6-4810-897f-b46fe30ddc9f", "carlosg@gmail.com", true, "Carlos", "Gomez", false, null, null, "CARLOSGOMEZ", "AQAAAAEAACcQAAAAEAcec6iQkz8SYQonZNevN1TWJowimgr821rTRCD6hLRre//vnvwVTKzwTSezeE4c3g==", null, false, "6cb26d74-d9de-43be-88d4-18eaee1e543c", false, "carlosgomez" }
                 });
 
             migrationBuilder.InsertData(

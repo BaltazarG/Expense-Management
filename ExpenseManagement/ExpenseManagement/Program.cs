@@ -1,10 +1,12 @@
 
+
 using ExpenseManagement.Contexts;
 using ExpenseManagement.Entities;
 using ExpenseManagement.Repositories.Implementations;
 using ExpenseManagement.Repositories.Interfaces;
 using ExpenseManagement.Services.Implementations;
 using ExpenseManagement.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -65,20 +67,24 @@ builder.Services.AddSwaggerGen(setupAction =>
     });
 });
 
-builder.Services.AddAuthentication("Bearer")
+
+builder.Services
+    .AddHttpContextAccessor()
+    .AddAuthorization()
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        options.TokenValidationParameters = new()
+        options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
             ValidateAudience = true,
+            ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Authentication:Issuer"],
             ValidAudience = builder.Configuration["Authentication:Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["Authentication:SecretForKey"]))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:Key"]))
         };
-    }
-);
+    });
 
 builder.Services.AddIdentity<User, IdentityRole>(opt =>
 {
@@ -88,6 +94,8 @@ builder.Services.AddIdentity<User, IdentityRole>(opt =>
     opt.User.RequireUniqueEmail = true;
 })
     .AddEntityFrameworkStores<ApplicationExpenseContext>();
+
+
 
 builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
@@ -113,8 +121,11 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
-app.UseAuthorization();
+app.UseAuthorization(); 
 
 app.MapControllers();
 
 app.Run();
+
+// TODO delete expense
+// TODO Authentication - Authorization

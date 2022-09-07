@@ -8,7 +8,8 @@ namespace ExpenseManagement.Profiles
     {
         public UserProfile()
         {
-    
+            CreateMap<UserCreationDto, User>();
+            CreateMap<User, UserToUpdateDto>();
 
             CreateMap<UserDto, User>();
             CreateMap<User, UserToUpdateDto>();

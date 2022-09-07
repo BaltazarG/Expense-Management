@@ -5,7 +5,7 @@ namespace ExpenseManagement.Services.Interfaces
 {
     public interface IExpenseService
     {
-        void AddExpense(ExpenseToCreationDto newExpense);
+        void AddExpense(ExpenseToCreationDto newExpense, string userId);
         ICollection<ExpenseDto>? GetAllExpenses(string userId);
         ExpenseDto? GetExpense(int expenseId, string userId);
         void DeleteExpense(int expenseId);

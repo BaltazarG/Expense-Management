@@ -1,9 +1,8 @@
-﻿using ExpenseManagement.Entities;
+﻿
+
 using ExpenseManagement.Models;
 using ExpenseManagement.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -11,7 +10,8 @@ namespace ExpenseManagement.Controllers
 {
     [Route("api/expenses/{userId}")]
     [ApiController]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = "Bearer", Roles = "User")]
+
     public class ExpenseController : ControllerBase
     {
         private readonly IExpenseService _expenseService;
@@ -25,13 +25,12 @@ namespace ExpenseManagement.Controllers
         [HttpGet]
         public ActionResult<ICollection<ExpenseDto>> GetExpenses(string userId)
         {
-
-            
+           
 
             var expenses = _expenseService.GetAllExpenses(userId);
             
 
-            if (expenses == null)
+            if (expenses == null || expenses.Count() == 0)
                 return NotFound("You dont have expenses");
  
 
@@ -55,13 +54,13 @@ namespace ExpenseManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ICollection<ExpenseDto>> AddExpense(ExpenseToCreationDto expenseToCreation)
+        public ActionResult<ICollection<ExpenseDto>> AddExpense(ExpenseToCreationDto expenseToCreation, string userId)
         {
 
             if (expenseToCreation == null)
                 return BadRequest();
 
-            _expenseService.AddExpense(expenseToCreation);
+            _expenseService.AddExpense(expenseToCreation, userId);
 
 
             return Ok("Expense created successfully");
@@ -76,6 +75,13 @@ namespace ExpenseManagement.Controllers
             if (expenseToUpdate == null)
                 return BadRequest();
 
+            var expense = _expenseService.GetExpense(expenseId, userId);
+
+
+            if (expense is null)
+                return NotFound("Expense not found");
+
+
             _expenseService.UpdateExpense(expenseToUpdate, expenseId, userId);
 
 
@@ -86,6 +92,11 @@ namespace ExpenseManagement.Controllers
         public ActionResult<ICollection<ExpenseDto>> DeleteExpense(int expenseId, string userId)
         {
 
+            var expense = _expenseService.GetExpense(expenseId, userId);
+
+
+            if (expense is null)
+                return NotFound("Expense not found");
 
 
             _expenseService.DeleteExpense(expenseId);

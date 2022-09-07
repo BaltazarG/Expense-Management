@@ -6,6 +6,7 @@ namespace ExpenseManagement.Entities
 {
     public class Expense
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
 
@@ -16,9 +17,8 @@ namespace ExpenseManagement.Entities
         [Required]
         public Category Category { get; set; }
 
-        [ForeignKey("UserId")]
-        public User User { get; set; }
-        public string UserId { get; set; } = string.Empty;
+        [ForeignKey("User")]
+        public string? UserId { get; set; } = string.Empty;
 
     }
 }

@@ -30,11 +30,11 @@ namespace ExpenseManagement.Services.Implementations
 				claims.Add(new Claim(ClaimTypes.Role, role));
 			}
 
-			var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Authentication:SecretForKey"]));
+			var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Authentication:Key"]));
 			var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 			var tokenDescriptor = new JwtSecurityToken(
-				issuer: _config["Jwt:Issuer"],
-				audience: _config["Jwt:Audience"],
+				issuer: _config["Authentication:Issuer"],
+				audience: _config["Authentication:Audience"],
 				claims: claims,
 				expires: DateTime.Now.AddMinutes(720),
 				signingCredentials: credentials);

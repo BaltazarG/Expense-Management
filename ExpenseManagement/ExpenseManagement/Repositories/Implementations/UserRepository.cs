@@ -1,6 +1,7 @@
 ﻿using ExpenseManagement.Contexts;
 using ExpenseManagement.Entities;
 using ExpenseManagement.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpenseManagement.Repositories.Implementations
 {
@@ -21,7 +22,12 @@ namespace ExpenseManagement.Repositories.Implementations
 
         public User? GetUser(string userId)
         {
-            return _context.Users.FirstOrDefault(u => u.Id == userId);
+            return _context.Users.Include(e => e.Expenses).FirstOrDefault(u => u.Id == userId);
+        }
+
+        public ICollection<User> GetUsers()
+        {
+            return _context.Users.Include(e => e.Expenses).ToList();
         }
     }
 }

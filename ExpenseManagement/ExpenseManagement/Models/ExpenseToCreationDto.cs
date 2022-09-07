@@ -11,8 +11,7 @@ namespace ExpenseManagement.Models
         [Required]
         public Category Category { get; set; }
 
-        [Required]
-        public string UserId { get; set; }
+
 
     }
 }

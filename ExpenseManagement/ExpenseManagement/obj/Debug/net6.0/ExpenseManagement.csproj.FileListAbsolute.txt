@@ -96,3 +96,6 @@ C:\AAImportant\Expense-Management\ExpenseManagement\ExpenseManagement\obj\Debug\
 C:\AAImportant\Expense-Management\ExpenseManagement\ExpenseManagement\obj\Debug\net6.0\ExpenseManagement.csproj.CopyComplete
 C:\AAImportant\Expense-Management\ExpenseManagement\ExpenseManagement\obj\Debug\net6.0\ExpenseManagement.genruntimeconfig.cache
 C:\AAImportant\Expense-Management\ExpenseManagement\ExpenseManagement\obj\Debug\net6.0\ref\ExpenseManagement.dll
+C:\AAImportant\Expense-Management\ExpenseManagement\ExpenseManagement\bin\Debug\net6.0\ExpenseManagement.staticwebassets.runtime.json
+C:\AAImportant\Expense-Management\ExpenseManagement\ExpenseManagement\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\AAImportant\Expense-Management\ExpenseManagement\ExpenseManagement\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll

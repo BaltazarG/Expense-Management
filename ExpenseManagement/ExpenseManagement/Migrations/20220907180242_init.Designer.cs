@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpenseManagement.Migrations
 {
     [DbContext(typeof(ApplicationExpenseContext))]
-    [Migration("20220904231528_Initial")]
-    partial class Initial
+    [Migration("20220907180242_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,7 +39,6 @@ namespace ExpenseManagement.Migrations
                         .HasColumnType("varchar(250)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
@@ -125,16 +124,16 @@ namespace ExpenseManagement.Migrations
                         {
                             Id = "272cf1fd-6e8b-4bdb-87b8-b136033fad9e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d4af9f47-3da1-4d1d-9646-214d27d4d598",
+                            ConcurrencyStamp = "227a38da-7df6-4810-897f-b46fe30ddc9f",
                             Email = "carlosg@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Carlos",
                             LastName = "Gomez",
                             LockoutEnabled = false,
                             NormalizedUserName = "CARLOSGOMEZ",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKOTdR0+nusRhcbB2meHG68NJgPYDCo3nnX5dxocoyTpMmdwmmwCHsCHBNqTvWr+1g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAcec6iQkz8SYQonZNevN1TWJowimgr821rTRCD6hLRre//vnvwVTKzwTSezeE4c3g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "495ab526-f4d7-4b2f-bcf8-ad872299c601",
+                            SecurityStamp = "6cb26d74-d9de-43be-88d4-18eaee1e543c",
                             TwoFactorEnabled = false,
                             UserName = "carlosgomez"
                         },
@@ -142,16 +141,16 @@ namespace ExpenseManagement.Migrations
                         {
                             Id = "02174cf0–9412–4cfe-afbf-59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "701bd55d-852c-4132-9fac-f5470e4a279f",
+                            ConcurrencyStamp = "b09929ce-5dd9-43aa-9b64-2a1cf892c731",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LastName = "Super",
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEbDbiiYQ5aADrYamqsiLAxdB6koWYMvKKBLVUsWkROXkmLZ/8lKNqBhwpwp7gU01w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDMRldhxbvOWwu3I8ZkqImB7ZSxD11BqTSL+Eg3vQCWfpxvzB4r5J//w/1BzVN5M4g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2a513569-507e-46a3-9d4f-6ad39aec3c81",
+                            SecurityStamp = "de215fd2-447f-4474-9dcd-17d496f1b095",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -315,13 +314,9 @@ namespace ExpenseManagement.Migrations
 
             modelBuilder.Entity("ExpenseManagement.Entities.Expense", b =>
                 {
-                    b.HasOne("ExpenseManagement.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
+                    b.HasOne("ExpenseManagement.Entities.User", null)
+                        .WithMany("Expenses")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -373,6 +368,11 @@ namespace ExpenseManagement.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ExpenseManagement.Entities.User", b =>
+                {
+                    b.Navigation("Expenses");
                 });
 #pragma warning restore 612, 618
         }

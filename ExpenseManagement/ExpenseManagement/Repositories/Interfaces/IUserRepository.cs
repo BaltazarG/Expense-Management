@@ -6,6 +6,7 @@ namespace ExpenseManagement.Repositories.Interfaces
     {
         void DeleteUser(string userId);
         User? GetUser(string userId);
+        ICollection<User> GetUsers();
 
     }
 
